@@ -1,4 +1,34 @@
+
+<!DOCTYPE html>
 <html>
+<!-- Stuart Spiegel, Date: 2/26/2019 -->
+
+<!-- Ref to style sheet -->
+<link href="../css/main.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../css/fonts.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/button.css" rel="stylesheet" type="text/css" media="all" />
+
+<div id="wrapper">
+  <div id="menu-wrapper">
+    <div id="menu" class="container">
+      <ul>
+        <li><a href="/index.html">Homepage</a></li>
+          <li><a href="/3DArtwork.html">3D ArtWork</a></li>
+          <li><a href="/blog.html">Blog</a></li>
+          <li><a href="/Portfolio.html">Portfolio</a></li>
+          <li><a href="/Contact.html">Contact</a></li>
+          <li><a href='/music.html'>Music</a></li>
+          <li><a href='/Login.html'>Login</a></li>
+      </ul>
+    </div>
+    <div id="header-wrapper">
+  		<div id="header" class="container">
+  			<div id="logo">
+  				<h1><a href="#">Stuart Spiegel</a></h1>
+  			</div>
+  		</div>
+  	</div>
+    <!-- end #menu -->
 <?php
 // Initialize the session
 session_start();
@@ -87,28 +117,36 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Close connection
     mysqli_close($link);
 }
-?>
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+
+    <!-- start style wrapper -->
     <style type="text/css">
         body{ font: 14px sans-serif; }
         .wrapper{ width: 350px; padding: 20px; }
     </style>
+
+    <?php require 'login.php';?> <!-- include statements -->
+    <?php require 'config.php';?>
+    <?php require 'logout.php';?>
+    <?php require 'menu.php';?>
+    <?php require 'register.php';?>
+    <?php require 'reset-password.php';?>
+    <?php require 'welcome.php';?>
+
 </head>
+<!-- end header -->
+
 <body>
     <div class="wrapper">
         <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <p>Please fill in your credentials to login.</p> <!-- break point -->
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label>Username</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
+                <input type="text" name="username" class="form-control" value=" ">
+                <span class="help-block"></span>
             </div>
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                 <label>Password</label>
@@ -118,7 +156,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Login">
             </div>
-            <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+            <p>Don't have an account? <a href="/Register.html">Sign up now</a>.</p>
         </form>
     </div>
 </body>

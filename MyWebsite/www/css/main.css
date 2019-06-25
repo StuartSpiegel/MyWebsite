@@ -194,6 +194,7 @@ hr {
 		font-weight: 400;
 		font-size: 2em;
 		color: #16a085;
+		
 	}
 
 	.title .byline
@@ -203,6 +204,7 @@ hr {
 		font-weight: 400;
 		font-size: 0.90em;
 		color: #6F6F6F;
+		
 	}
 
 /** WRAPPER */
@@ -219,6 +221,7 @@ hr {
 .container {
 	width: 1200px;
 	margin: 0px auto;
+	margin-top: 1%
 }
 
 .clearfix {
@@ -235,7 +238,7 @@ hr {
 	overflow: hidden;
 	background: url(images/bg01.png) repeat;
 	background-size: 100%;
-	padding: 6em 0em 2em 0em;
+	padding: 1em -1em -1em 0em;
 	background: #333333;
 }
 
@@ -246,7 +249,7 @@ hr {
 
 	#header
 	{
-		position: relative;
+		position: center;
 		overflow: hidden;
 		text-align: center;
 	}
