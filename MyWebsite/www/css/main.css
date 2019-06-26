@@ -3,12 +3,61 @@
 CSS DOC 1: ref
 Author: Stuart Spiegel
 Date: 2/22/2019
+Updated: 6/25/2019
 */
 
 html, body {
-	height: 100%;
+	max-width: 100%;
+	overflow-x: hidden;
 }
 
+/*
+Define variables for global animation.
+*/
+
+#animation1 {
+		display: block;
+		position: relative;
+		text-align: center;
+	}
+	.animate.backwards > span{
+		animation: animateBackwards 1s ease-in-out forwards;
+	}
+	.animate.forwards > span{
+		animation: animateForwards 1s ease-in-out forwards;
+	}
+	.animate.mixed > span:nth-child(even){
+		animation: animateBackwards 1s ease-in-out forwards;
+	}
+	.animate.mixed > span:nth-child(odd){
+		animation: animateForwards 1s ease-in-out forwards;
+	}
+	
+	
+	/*
+	Do the actual animation but definition keyframes 
+	for the specified span variables.
+	*/
+	@keyframes animateForwards {
+		from { top: 0; transform: rotate(0deg); }
+		to { top: .9em; transform: rotate(-15deg); }
+	}
+	@keyframes animateBackwards {
+		from { top: 0; transform: rotate(0deg); }
+		to { top: 1em; transform: rotate(25deg); }
+	}
+
+
+	
+
+/*
+Restrict the X-Scroll bar 
+*/
+.current_page_item {overflow-x: hidden; overflow-y: auto;}
+
+/*
+Body Definitions and headers
+*/
 body {
 	margin: 0px;
 	padding: 0px;
@@ -19,10 +68,14 @@ body {
 	color: #363636;
 }
 
-
 h1, h2, h3 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 42;
+	text-align: center;
+	letter-spacing: 18pt;
 	margin: 0;
 	padding: 0;
+	color: #333333;
 }
 
 p, ol, ul {
@@ -260,30 +313,44 @@ hr {
 
 	#logo
 	{
-		width: 500px;
-		height: 100px;
-		margin: 0 auto;
-		padding: 2em 0em;
+		width: 100%;
+		height: 100%;
+		margin: 0, 0, 0, 0;
+		padding: -2em -2em;
+		letter-spacing: 24pt;
+		font-size: 42pt;
+		font-family: 'Courier New', Courier;
 		text-transform: uppercase;
+		text-decoration-style: dashed;
+		overflow-y: scroll; overflow-x:hidden;
+
+		
 	}
 
 	#logo h1
 	{
-		letter-spacing: 0.10em;
-		font-size: 3em;
+		letter-spacing: 24pt;
+		font-size: 70pt;
+		font-family: 'Courier New', Courier, monospace;
+		color: silver;
+		overflow-y: scroll; overflow-x:hidden;
+		
+
 	}
 
 	#logo p
 	{
-		letter-spacing: 0.10em;
+		letter-spacing: 0.40em;
 		color: #FFF;
 	}
 
 	#logo a
 	{
-		text-decoration: none;
+		text-decoration: darkgoldenrod;
 		color: #FFF;
 	}
+
+	
 
 /*********************************************************************************/
 /* Banner                                                                        */
@@ -292,14 +359,12 @@ hr {
 	#banner
 	{
 		overflow: hidden;
-		height: 500px;
+		height: 100%;
 		background: url(images/pic01.jpg) no-repeat center;
 		background-size: cover;
+		overflow-y: scroll; overflow-x:hidden;
 	}
 
-	#banner .image
-	{
-	}
 
 
 /** MENU */
@@ -352,9 +417,11 @@ hr {
 #page
 {
 	position: relative;
-	overflow: hidden;
-	padding: 6em 0em 5em 0em;
+	overflow: auto;
+	align-content: center;
+
 }
+
 
 /** CONTENT */
 
@@ -362,6 +429,7 @@ hr {
 {
 	float: left;
 	width: 790px;
+	align-content: center;
 }
 
 /*********************************************************************************/
@@ -371,7 +439,7 @@ hr {
 	#sidebar
 	{
 		float: right;
-		width: 345px;
+		width: 354px;
 	}
 
 	#sidebar .title h2
@@ -577,14 +645,14 @@ hr {
 	#box2
 	{
 		float: left;
-		width: 354px;
+		width: 200px;
 		margin-left: 24px;
-		padding-right: 30px;
+		padding-right: 0px;
 	}
 
 	#box3
 	{
 		float: right;
-		width: 344px;
-		padding-left: 40px;
+		width: 300px;
+		padding-left: 0px;
 	}

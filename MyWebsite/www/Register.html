@@ -20,13 +20,6 @@
   <link href="../css/fonts.css" rel="stylesheet" type="text/css" media="all" />
   <link href="../css/button.css" rel="stylesheet" type="text/css" media="all" />
 
-  <?php require 'login.php';?> <!-- include statements -->
-  <?php require 'config.php';?>
-  <?php require 'logout.php';?>
-  <?php require 'menu.php';?>
-  <?php require 'register.php';?>
-  <?php require 'reset-password.php';?>
-  <?php require 'welcome.php';?>
 
   <!-- scripts for main page -->
   <script type="text/javascript">
@@ -68,15 +61,31 @@
   	<div id="header-wrapper">
   		<div id="header" class="container">
   			<div id="logo">
-  				<h1><a href="#">Stuart Spiegel</a></h1>
+  				<logo><a href="#">Stuart Spiegel</a></logo>
   			</div>
   		</div>
   	</div>
 <!-- ******************************************************* -->
-  				<!-- Content -->
-          <?php
+                  <!-- Content -->
+        <!-- PHP processing script execution-->
+          <script language="php" >
+              
+            
           // Include config file
-          require_once "config.php";
+          /* Database credentials. Assuming you are running MySQL
+            server with default setting (user 'root' with no password) */
+    define('DB_SERVER', 'localhost');
+    define('DB_USERNAME', 'root');
+    define('DB_PASSWORD', '');
+    define('DB_NAME', 'demo');
+
+/* Attempt to connect to MySQL database */
+$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+
+// Check connection
+if($link === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
 
           // Define variables and initialize with empty values
           $username = $password = $confirm_password = "";
@@ -109,9 +118,7 @@
                           } else{
                               $username = trim($_POST["username"]);
                           }
-                      } else{
-                          echo "Oops! Something went wrong. Please try again later.";
-                      }
+                      } 
                   }
 
                   // Close statement
@@ -121,11 +128,10 @@
               // Validate password
               if(empty(trim($_POST["password"]))){
                   $password_err = "Please enter a password.";
-              } elseif(strlen(trim($_POST["password"])) < 6){
+              } elseif(strlen(trim($_POST["password"])) < 6)
+              {
                   $password_err = "Password must have atleast 6 characters.";
-              } else{
-                  $password = trim($_POST["password"]);
-              }
+              } 
 
               // Validate confirm password
               if(empty(trim($_POST["confirm_password"]))){
@@ -155,10 +161,7 @@
                       if(mysqli_stmt_execute($stmt)){
                           // Redirect to login page
                           header("location: login.php");
-                      } else{
-                          echo "Something went wrong. Please try again later.";
-                      }
-                  }
+                      } 
 
                   // Close statement
                   mysqli_stmt_close($stmt);
@@ -167,9 +170,8 @@
               // Close connection
               mysqli_close($link);
           }
-          ?>
-
-          <!DOCTYPE html>
+          </script>
+          
           <html lang="en">
           <link href="css/main.css" rel="stylesheet" type="text/css" media="all" />
           <link href="css/fonts.css" rel="stylesheet" type="text/css" media="all" />
@@ -210,13 +212,6 @@
                       <p>Already have an account? <a href="/Login.html">Login here</a>.</p>
                   </form>
               </div>
-          </body>
-          </html>
-
-
-
-          <!-- End content -->
-  				</ul>
   			</div>
   		</div>
 
@@ -230,5 +225,5 @@
   <div id="copyright" class="container">
   	<p>&copy; StuartSpiegel.com | All rights reserved. | Design by Stuart Spiegel.</p>
   </div>
-<!--********************************************************-->
+  </div>
 </html>
