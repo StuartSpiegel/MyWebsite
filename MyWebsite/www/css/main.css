@@ -15,21 +15,21 @@ html, body {
 Define variables for global animation.
 */
 
-#animation1 {
+	div.animation1 {
 		display: block;
 		position: relative;
 		text-align: center;
 	}
-	.animate.backwards > span{
+	div.animate.backwards > span{
 		animation: animateBackwards 1s ease-in-out forwards;
 	}
-	.animate.forwards > span{
+	div.animate.forwards > span{
 		animation: animateForwards 1s ease-in-out forwards;
 	}
-	.animate.mixed > span:nth-child(even){
+	div.animate.mixed > span:nth-child(even){
 		animation: animateBackwards 1s ease-in-out forwards;
 	}
-	.animate.mixed > span:nth-child(odd){
+	div.animate.mixed > span:nth-child(odd){
 		animation: animateForwards 1s ease-in-out forwards;
 	}
 	
