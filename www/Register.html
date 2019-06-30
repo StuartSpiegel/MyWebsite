@@ -178,7 +178,6 @@ if($link === false){
           <link href="css/button.css" rel="stylesheet" type="text/css" media="all" />
           <head>
               <meta charset="UTF-8">
-              <title>Sign Up</title>
 
               <style type="text/css">
                   body{ font: 14px sans-serif; }
@@ -187,33 +186,33 @@ if($link === false){
           </head>
           <body>
               <div class="wrapper">
-                  <h2>Sign Up</h2>
                   <p>Please fill this form to create an account.</p>
-                  <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                      <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                          <label>Username</label>
-                          <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                          <span class="help-block"><?php echo $username_err; ?></span>
-                      </div>
-                      <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                          <label>Password</label>
-                          <input type="password" name="password" class="form-control" value="<?php echo $password; ?>">
-                          <span class="help-block"><?php echo $password_err; ?></span>
-                      </div>
-                      <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
-                          <label>Confirm Password</label>
-                          <input type="password" name="confirm_password" class="form-control" value="<?php echo $confirm_password; ?>">
-                          <span class="help-block"><?php echo $confirm_password_err; ?></span>
-                      </div>
-                      <div class="form-group">
-                          <input type="submit" class="btn btn-primary" value="Submit">
-                          <input type="reset" class="btn btn-default" value="Reset">
-                      </div>
-                      <p>Already have an account? <a href="/Login.html">Login here</a>.</p>
-                  </form>
-              </div>
-  			</div>
-  		</div>
+                  <form action="register.php" style="border:1px solid #ccc" method="POST">
+    <hr>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+
+    <p>By creating an account you agree to our <a href="#" style="color: aquamarine">Terms & Privacy</a>.</p>
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
+</form>
+</div>
+
 
   <!-- END DIV_1 Menu Wrapper -->
 

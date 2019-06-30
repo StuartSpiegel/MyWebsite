@@ -107,7 +107,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <link href="/css/message.css" rel="stylesheet" type="text/css" media="all" />
 
 
-<div id="wrapper">
+<div class="wrapper">
   <div id="menu-wrapper">
     <div id="menu" class="container">
       <ul>
@@ -134,34 +134,51 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta charset="UTF-8">
     <title>Login</title>
 
-    <!-- start style wrapper -->
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>
-
 </head>
 <!-- end header -->
 
 <body>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+        <!-- Start Login Form -->
     <div class="wrapper">
-        <h4>Login</h4>
-        <h5>Please fill in your credentials to login.</h5> <!-- break point -->
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <h5>Username</h5>
-                <input type="text" name="username" class="form-control" value=" ">
-                <span class="help-block"></span>
-            </div>
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <h5>Password</h5>
-                <input type="password" name="password" class="form-control">
-                <span class="help-block"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
-            </div>
-            <h5>Don't have an account? <a href="/Register.html"><h5>Sign up now</h5></a></h5>
-        </form>
-    </div>
+    <form action="login.php" method="POST">
+        <div class="imgcontainer">
+          <img src="/img/4K-Earth.jpg" alt="Avatar" class="avatar">
+        </div>
+      
+       
+          <label for="uname"><b>Username</b></label>
+          <input type="text" placeholder="Enter Username" name="uname" required>
+      
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+      
+          <button type="submit">Login</button>
+          <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label>
+      
+          <button type="button" class="cancelbtn">Cancel</button>
+          <br>
+          <br>
+          <span class="psw">Forgot <a href="#">password?</a></span><br>
+          <br>
+      </form>
+      </div>
+      <br>
+      <br>
+      <br>
+      Register: <a href="/Register.html" style="color: aquamarine">Register</a>
+
+      <br>
+      <br>
+      <br>
+      <br>
+
+
 </body>
 </html>
