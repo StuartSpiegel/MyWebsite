@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<script language="php" >
+<?php
 // Initialize the session
 session_start();
 
@@ -8,18 +7,9 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: welcome.php");
     exit;
 }
-// Include config file        
-          // Include config file
-          /* Database credentials. Assuming you are running MySQL
-            server with default setting (user 'root' with no password) */
-    define('DB_SERVER', 'mysql.stuartspiegel.com');
-    define('DB_USERNAME', 'stuartspiegel');
-    define('DB_PASSWORD', 'CYPHER_TEXT');
-    define('DB_NAME', 'stuartspiegel');
 
-/* Attempt to connect to MySQL database */
-$link = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
+// Include config file
+require_once "config.php";
 
 // Define variables and initialize with empty values
 $username = $password = "";
@@ -84,6 +74,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     // Display an error message if username doesn't exist
                     $username_err = "No account found with that username.";
                 }
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
             }
         }
 
@@ -92,93 +84,41 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     // Close connection
-    mysqli_close($link); 
-} 
-</script>
+    mysqli_close($link);
+}
+?>
 
-
-<html>
-<!-- Stuart Spiegel, Date: 2/26/2019 -->
-
-<!-- Ref to style sheet -->
-<link href="/css/main.css" rel="stylesheet" type="text/css" media="all" />
-<link href="/css/fonts.css" rel="stylesheet" type="text/css" media="all" />
-<link href="/css/button.css" rel="stylesheet" type="text/css" media="all" />
-<link href="/css/message.css" rel="stylesheet" type="text/css" media="all" />
-
-
-<div class="wrapper">
-  <div id="menu-wrapper">
-    <div id="menu" class="container">
-      <ul>
-        <li><a href="/index.html">Homepage</a></li>
-          <li><a href="/3DArtwork.html">3D ArtWork</a></li>
-          <li><a href="/blog.html">Blog</a></li>
-          <li><a href="/Portfolio.html">Portfolio</a></li>
-          <li><a href="/Contact.html">Contact</a></li>
-          <li><a href='/music.html'>Music</a></li>
-          <li><a href='/Login.html'>Login</a></li>
-      </ul>
-    </div>
-    <div id="header-wrapper">
-  		<div id="header" class="container">
-  			<div id="logo">
-  				<logo><a href="#">Stuart Spiegel</a></logo>
-  			</div>
-  		</div>
-    </div>  
-</div>
-    <!-- end #menu -->
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <style type="text/css">
+        body{ font: 14px sans-serif; }
+        .wrapper{ width: 350px; padding: 20px; }
+    </style>
 </head>
-<!-- end header -->
-
 <body>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-        <!-- Start Login Form -->
     <div class="wrapper">
-    <form action="login.php" method="POST">
-        <div class="imgcontainer">
-          <img src="/img/4K-Earth.jpg" alt="Avatar" class="avatar">
-        </div>
-      
-       
-          <label for="uname" style="color:crimson"><b>Username</b></label>
-          <input type="text" placeholder="Enter Username" name="uname" required>
-      
-          <label for="psw" style="color: crimson"><b>Password</b></label>
-          <input type="password" placeholder="Enter Password" name="psw" required>
-      
-          <button type="submit" class="loginbtn">Login</button>
-          <label>
-          <input type="checkbox" checked="checked" name="remember" style="color: crimson"> Remember me
-          </label>
-         
-          <button type="button" class="cancelbtn">Cancel</button>
-          <br>
-          <br>
-          <span class="psw" style="color: crimson">Forgot <a href="#" style="color: crimson">password?</a></span><br>
-          <br>
-      </form>
-      </div>
-      <br>
-      <br>
-      <br>
-      <a href="/Register.html" style="color:crimson">Register</a>
-
-      <br> 
-      <br>
-      <br>
-      <br>
-
-
+        <h2>Login</h2>
+        <p>Please fill in your credentials to login.</p>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                <label>Username</label>
+                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
+                <span class="help-block"><?php echo $username_err; ?></span>
+            </div>
+            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control">
+                <span class="help-block"><?php echo $password_err; ?></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Login">
+            </div>
+            <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
+        </form>
+    </div>
 </body>
 </html>

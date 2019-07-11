@@ -1,9 +1,35 @@
 * {
   box-sizing: border-box;
+  overflow: hidden;
+  
+}
+/*
+Style the form and form border 
+*/
+form{
+  width: 100%;
+  padding: 20px;
 }
 
+/*
+style the login button
+*/
+button.loginbtn {
+  width: 50%;
+  align-content: center;
+}
+
+/*
+Style the Cancel Button
+*/
+button.cancelbtn{
+  width: 50%;
+  align-content: center;
+}
+
+
 /* Style the search field */
-form.example input[type=text] {
+form.input input[type=text] {
   padding: 10px;
   font-size: 17px;
   border: 1px solid grey;
@@ -13,10 +39,11 @@ form.example input[type=text] {
 }
 
 /* Style the submit button */
-form.example button {
-  float: left;
-  width: 20%;
-  padding: 10px;
+form.button {
+  display:inline-block;
+  min-width: 50px;
+  width: 80px;
+  padding:5px 10px;
   background: #2196F3;
   color: white;
   font-size: 17px;
@@ -24,6 +51,7 @@ form.example button {
   border-left: none; /* Prevent double borders */
   cursor: pointer;
 }
+
 
 form.example button:hover {
   background: #0b7dda;
